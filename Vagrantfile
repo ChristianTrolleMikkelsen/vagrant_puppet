@@ -35,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "puppet-windows" do |puppet|
 	puppet.vm.define "puppet-windows"
-	puppet.vm.box = "windows_2012_r2_std"
+	puppet.vm.box = "windows_2012_r2_core"
 	puppet.vm.hostname = "puppet-windows"
 
 	puppet.winrm.username = "vagrant"
@@ -51,7 +51,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	puppet.vm.network :forwarded_port, guest: 5985, host: 5985
 
 	puppet.vm.provider :virtualbox do |v, override|
-		v.gui = true
+		v.gui = false
 		v.name = "puppet-windows"
 		v.customize ["modifyvm", :id, "--memory", "2048"]
 		v.customize ["modifyvm", :id, "--cpus", "1"]
