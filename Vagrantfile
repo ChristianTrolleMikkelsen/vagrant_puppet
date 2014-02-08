@@ -17,6 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	end
 	master.vm.provision "shell", path: "update_apt_get.sh"
 	master.vm.provision "shell", path: "install_puppet.sh", args: "/vagrant/puppet_master.answer"
+	master.vm.provision "shell", path: "install_puppet_windows_modules.sh"
   end
 
   config.vm.define "puppet-ubuntu" do |puppet|
